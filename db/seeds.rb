@@ -1,14 +1,26 @@
 Product.delete_all
 
-10.times do
-  product_name = Faker::Commerce.product_name
+electronics = [
+  'Smartphone',
+  'Laptop',
+  'Tablet',
+  'Headphones',
+  'Camera',
+  'Smartwatch',
+  'Drone',
+  'Bluetooth Speaker',
+  'Game Console',
+  'TV'
+]
+
+electronics.each do |product_name|
   product = Product.create(
     name: product_name,
     description: Faker::Lorem.sentence(word_count: 10),
-    price: Faker::Commerce.price(range: 0..100.0, as_string: true),
+    price: Faker::Commerce.price(range: 0..500.00, as_string: true),
     stock_quantity: Faker::Number.between(from: 1, to: 100),
     brand: Faker::Company.name,
-    image: "#{product_name.parameterize}.jpg"
+    image: product_name + ".jpg"
   )
 
   if product.persisted?
@@ -17,4 +29,3 @@ Product.delete_all
     puts "Failed to create product. Errors: #{product.errors.full_messages.join(", ")}"
   end
 end
-
