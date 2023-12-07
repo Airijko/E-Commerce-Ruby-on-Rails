@@ -14,8 +14,10 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'activeadmin', '2.11'
+gem 'devise'
 gem 'bootstrap', '~> 5.1.0'
 gem 'faker', '~> 2.18'
+gem 'sassc-rails'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

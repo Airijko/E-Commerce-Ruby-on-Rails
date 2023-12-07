@@ -29,3 +29,5 @@ electronics.each do |product_name|
     puts "Failed to create product. Errors: #{product.errors.full_messages.join(", ")}"
   end
 end
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

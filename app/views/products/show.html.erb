@@ -1,0 +1,14 @@
+<div class="product-show pt-5">
+  <div class="card">
+    <% if @product.image.present? %>
+      <%= image_tag("products/#{@product.image}", alt: @product.name) %>
+    <% end %>
+    <div class="card-body">
+      <h1 class="card-title"><%= @product.name %></h1>
+      <p class="card-text"><%= @product.description %></p>
+      <p class="card-text"><small class="text-muted">Sold by: <%= @product.brand %></small></p>
+      <p class="card-text"><small class="text-muted">Stock: <%= @product.stock_quantity %></small></p>
+      <h3><%= number_to_currency(@product.price) %></h3>
+    </div>
+  </div>
+</div>
