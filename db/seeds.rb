@@ -20,7 +20,7 @@ electronics.each do |product_name|
     price: Faker::Commerce.price(range: 0..500.00, as_string: true),
     stock_quantity: Faker::Number.between(from: 1, to: 100),
     brand: Faker::Company.name,
-    image: product_name + ".jpg",
+    image: nil,
     category_id: 1
   )
 
