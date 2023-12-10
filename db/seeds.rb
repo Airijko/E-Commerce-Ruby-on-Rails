@@ -1,4 +1,4 @@
-Product.delete_all
+# Product.delete_all
 
 electronics = [
   'Smartphone',
@@ -8,29 +8,29 @@ electronics = [
   'Camera',
   'Smartwatch',
   'Drone',
-  'Bluetooth Speaker',
-  'Game Console',
+  'Speaker',
+  'Console',
   'TV'
 ]
 
-electronics.each do |product_name|
+8.times do
+  electronics.each do |product_name|
   product = Product.create(
     name: product_name,
     description: Faker::Lorem.sentence(word_count: 10),
     price: Faker::Commerce.price(range: 0..500.00, as_string: true),
     stock_quantity: Faker::Number.between(from: 1, to: 100),
     brand: Faker::Company.name,
-    image: nil,
-    category_id: 1
+    category_id: Faker::Number.between(from: 1, to: 5)
   )
 
-  if product.persisted?
-    puts "Product #{product.name} was created successfully."
-  else
-    puts "Failed to create product. Errors: #{product.errors.full_messages.join(", ")}"
+  downloaded_image = URI.open("https://source.unsplash.com/random/?#{product_name}-product")
+  product.image.attach(io: downloaded_image, filename: "m-#{product_name}.jpg")
+
+  puts "Product #{product.name} was created successfully."
   end
 end
 
-if Rails.env.development?
-  AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-end
+# if Rails.env.development?
+#   AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+# end

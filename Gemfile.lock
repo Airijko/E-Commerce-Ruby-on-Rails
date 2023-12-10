@@ -90,6 +90,9 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.9.3, < 3)
       sassc-rails (>= 2.0.0)
+    bootstrap5-kaminari-views (0.0.1)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     builder (3.2.4)
     capybara (3.39.2)
       addressable
@@ -294,12 +297,14 @@ DEPENDENCIES
   activeadmin (= 2.11)
   bootsnap
   bootstrap (~> 5.1.0)
+  bootstrap5-kaminari-views
   capybara
   debug
   devise
   faker (~> 2.18)
   importmap-rails
   jbuilder
+  kaminari
   puma (~> 5.0)
   rails (~> 7.0.8)
   sassc-rails
