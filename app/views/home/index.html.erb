@@ -1,5 +1,21 @@
-<div class="row">
-  <%= debug session[:cart] %>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Shopping Cart
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <% @cart.each do |product| %>
+        <li><%= product.name %> - $<%= product.price %></li>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row pt-3">
   <% @products.each do |product| %>
     <div class="col-md-3 pb-3">
       <div class="card h-100 d-flex flex-column justify-content-between">
@@ -14,7 +30,11 @@
             <p class="card-text"><small class="text-muted">Stock: <%= product.stock_quantity %></small></p>
           </div>
           <div class="d-flex justify-content-between mt-auto pt-3">
-            <div><%= button_to 'add to cart', add_to_cart_path(product.id), method: :post %></div>
+            <% if @cart.include?(product) %>
+              <p>Product is in your cart</p>
+            <% else %>
+              <div><%= button_to 'add to cart', add_to_cart_path(product.id), method: :post %></div>
+            <% end %>
             <h5 class="mb-3"><%= number_to_currency(product.price) %></h5>
           </div>
         </div>
