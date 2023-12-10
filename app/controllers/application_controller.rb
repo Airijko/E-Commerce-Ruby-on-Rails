@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
         redirect_to root_path
     end
 
+    def remove_from_cart
+        session[:cart].delete(params[:id].to_i)
+        redirect_to root_path
+    end
+
     private
 
     def initizalize_session
