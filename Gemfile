@@ -21,6 +21,7 @@ gem 'sassc-rails'
 gem 'kaminari'
 gem 'bootstrap5-kaminari-views'
 gem 'stripe'
+gem 'omniauth'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
