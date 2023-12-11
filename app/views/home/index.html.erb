@@ -1,5 +1,10 @@
-<form class="d-flex w-100 pb-3" role="search" method="get" action="<%= products_path %>">
+<form class="d-flex w-100 pb-3" role="search" method="get" action="<%= root_path %>">
   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+  <input class="form-control me-2" type="number" placeholder="Min Price" aria-label="Min Price" name="min_price">
+  <input class="form-control me-2" type="number" placeholder="Max Price" aria-label="Max Price" name="max_price">
+  <input class="form-control me-2" type="date" placeholder="Start Date" aria-label="Start Date" name="start_date">
+  <input class="form-control me-2" type="date" placeholder="End Date" aria-label="End Date" name="end_date">
+  <%= select_tag 'category', options_for_select(@categories.unshift('Select a category'), params[:category]), class: 'form-control me-2' %>
   <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
 <div class="accordion" id="accordionExample">
@@ -15,10 +20,19 @@
           <p>You have no items</p>
         <% else %>
           <% @cart.each do |product| %>
-            <li class="d-flex justify-content-between align-items-center pb-1">
-              <span><%= product.name %> - $<%= product.price %></span>
-              <%= button_to 'remove from cart', remove_from_cart_path(product.id), method: :delete, class: 'btn btn-danger' %>
-            </li>
+            <div class="row pb-2">
+              <div class="col-8 d-flex justify-content-between align-items-center">
+                <span><%= product.name %> - $<%= product.price %></span>
+                <span>Quantity: <%= session[:cart].count(product.id) %></span>
+                <%= form_with(url: adjust_quantity_path(product.id), method: :post, local: true) do |form| %>
+                  <%= form.number_field :quantity, value: session[:cart].count(product.id), min: 0 %>
+                  <%= form.submit 'Update Quantity' %>
+                <% end %>
+              </div>
+              <div class="col-4 d-flex justify-content-end">
+                <%= button_to 'remove from cart', remove_from_cart_path(product.id), method: :delete, class: 'btn btn-danger' %>
+              </div>
+            </div>
           <% end %>
         <% end %>
       </div>

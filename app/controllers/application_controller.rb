@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
     def add_to_cart
         id = params[:id].to_i
-
         session[:cart] << id unless session[:cart].include?(id)
         redirect_to root_path
     end
@@ -14,6 +13,20 @@ class ApplicationController < ActionController::Base
         session[:cart].delete(params[:id].to_i)
         redirect_to root_path
     end
+
+    def adjust_quantity
+       product_id = params[:id].to_i
+       quantity = params[:quantity].to_i
+       Rails.logger.info "adjust_quantity called with product_id: #{product_id} and quantity: #{quantity}"
+       if quantity <= 0
+           session[:cart].delete(product_id)
+       else
+           session[:cart].delete(product_id)
+           quantity.times { session[:cart] << product_id }
+       end
+       redirect_to root_path
+   end
+
 
     private
 

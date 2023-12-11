@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-center">
+  <div class="card col-md-6">
+    <div class="card-body d-flex flex-column justify-content-between">
+      <%= image_tag(@product.image, alt: @product.name) if @product.image.present? %>
+      <h1 class="card-title"><%= @product.name %></h1>
+      <p class="card-text"><%= @product.description %></p>
+      <p class="card-text"><%= link_to @product.category.name, category_path(@product.category), class: 'text-decoration-none fw-bold' %></p>
+      <p class="card-text"><small class="text-muted">Sold by: <%= @product.brand %></small></p>
+      <p class="card-text"><small class="text-muted">Stock: <%= @product.stock_quantity %></small></p>
+      <h3><%= number_to_currency(@product.price) %></h3>
+    </div>
+  </div>
+</div>
