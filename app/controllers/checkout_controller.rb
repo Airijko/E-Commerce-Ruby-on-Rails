@@ -1,6 +1,6 @@
 class CheckoutController < ApplicationController
     def create
-        @products = Product.find(session[:cart])
+        @product = Product.find(session[:cart])
 
         if @product.nil?
             redirect_to root_path
@@ -9,6 +9,7 @@ class CheckoutController < ApplicationController
 
         respond_to do |format|
             format.js
+            format.html { redirect_to root_path }
         end
 
     end
