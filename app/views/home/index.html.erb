@@ -24,9 +24,9 @@
               <div class="col-8 d-flex justify-content-between align-items-center">
                 <span><%= product.name %> - $<%= product.price %></span>
                 <span>Quantity: <%= session[:cart].count(product.id) %></span>
-                <%= form_with(url: adjust_quantity_path(product.id), method: :post, local: true) do |form| %>
-                  <%= form.number_field :quantity, value: session[:cart].count(product.id), min: 0 %>
-                  <%= form.submit 'Update Quantity' %>
+                <%= form_with(url: adjust_quantity_path(product.id), method: :post, local: true, class: 'd-flex align-items-center gap-3')  do |form| %>
+                  <%= form.number_field :quantity, value: session[:cart].count(product.id), min: 0, class: 'form-control' %>
+                  <%= form.submit 'Update Quantity', class: 'btn btn-info' %>
                 <% end %>
               </div>
               <div class="col-4 d-flex justify-content-end">
@@ -35,6 +35,7 @@
             </div>
           <% end %>
         <% end %>
+        <%= button_to 'buy now', checkout_create_path, method: :post, class: 'btn btn-success' %>
       </div>
     </div>
   </div>
@@ -55,9 +56,9 @@
           </div>
           <div class="d-flex justify-content-between mt-auto pt-3">
             <% if @cart.include?(product) %>
-              <div><%= button_to 'remove from cart', remove_from_cart_path(product.id), method: :delete %></div>
+              <div><%= button_to 'remove from cart', remove_from_cart_path(product.id), method: :delete, class: 'btn btn-warning' %></div>
             <% else %>
-              <div><%= button_to 'add to cart', add_to_cart_path(product.id), method: :post %></div>
+              <div><%= button_to 'add to cart', add_to_cart_path(product.id), method: :post, class: 'btn btn-primary' %></div>
             <% end %>
             <h5 class="mb-3"><%= number_to_currency(product.price) %></h5>
           </div>
