@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks'}
 
+  get '/api/auth/callback/github', to: 'api/auth/github#create'
+
   namespace :api do
     namespace :auth do
       get 'callback/github', to: 'github#create'
