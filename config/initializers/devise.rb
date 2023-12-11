@@ -1,4 +1,3 @@
-require 'omniauth-github'
 # frozen_string_literal: true
 
 # Assuming you have not yet modified this file, each configuration option below
@@ -272,7 +271,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :github, ENV.fetch('GITHUB_APP_ID'), ENV.fetch('GITHUB_APP_SECRET'), scope: 'user:email'
+  # config.omniauth :github, ENV.fetch('GITHUB_APP_ID'), ENV.fetch('GITHUB_APP_SECRET'), scope: 'user:email'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
