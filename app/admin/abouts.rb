@@ -5,7 +5,6 @@ ActiveAdmin.register About do
    f.inputs do
      f.input :title
      f.input :content, as: :text
-     f.input :created_at
    end
    f.actions
  end

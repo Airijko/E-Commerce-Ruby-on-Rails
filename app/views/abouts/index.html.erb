@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-lg-8">
+    <% @about.each do |about| %>
+      <div class="mb-4">
+        <h2 class="display-5 mb-3"><%= about.title %></h2>
+        <p class="lead"><%= about.content %></p>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-lg-4">
+    <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--jvDLhx0b--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/cpcr5w0kgl6j94tss7n9.png" class="img-fluid rounded">
+    <h2 class="display-5 mb-3">Contact</h2>
+    <div class="card">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Jojo Jimena</li>
+        <li class="list-group-item">jjimena2@academic.rrc.ca</li>
+      </ul>
+    </div>
+  </div>
+</div>

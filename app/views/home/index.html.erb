@@ -1,3 +1,7 @@
+<form class="d-flex w-100 pb-3" role="search" method="get" action="<%= products_path %>">
+  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
@@ -22,9 +26,9 @@
   </div>
 </div>
 <div class="row pt-3">
-  <% @products.each do |product| %>
+  <% @filtered_products.each do |product| %>
     <div class="col-md-3 pb-3">
-      <div class="card h-100 d-flex flex-column justify-content-between">
+      <div class="card h-100">
         <div class="card-body d-flex flex-column justify-content-between">
           <%= image_tag(product.image, alt: product.name) if product.image.present? %>
           <div class="pt-3">
@@ -49,5 +53,5 @@
   <% end %>
 </div>
 <div class="pagination justify-content-center mb-5">
-  <%= paginate @products, theme: 'bootstrap-5' %>
+  <%= paginate @filtered_products, theme: 'bootstrap-5' %>
 </div>
