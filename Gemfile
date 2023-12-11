@@ -20,6 +20,7 @@ gem 'faker', '~> 2.18'
 gem 'sassc-rails'
 gem 'kaminari'
 gem 'bootstrap5-kaminari-views'
+gem 'stripe'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
