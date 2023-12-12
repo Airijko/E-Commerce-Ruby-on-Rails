@@ -10,22 +10,30 @@ class HomeController < ApplicationController
     products = Product.all
 
     if params[:search].present?
-      products = products.where("name LIKE ?", "%#{params[:search]}%")
+      products = products.where("products.name LIKE ?", "%#{params[:search]}%")
     end
 
     if params[:min_price].present?
       products = products.where("price >= ?", params[:min_price])
     end
 
-    if params[:start_date].present?
-      products = products.where("products.created_at >= ?", params[:start_date])
+    if params[:max_price].present?
+      products = products.where("price <= ?", params[:max_price])
     end
 
-    if params[:end_date].present?
-      products = products.where("products.created_at <= ?", params[:end_date])
+    if params[:recently_modified].present?
+      products = products.where("updated_at >= ?", 3.days.ago)
     end
 
-    if params[:category].present?
+    if params[:recently_created].present?
+      products = products.where("created_at >= ?", 3.days.ago)
+    end
+
+    if params[:on_sale].present?
+      products = products.where(on_sale: true)
+    end
+
+    if params[:category].present? && params[:category] != 'Select a category'
       products = products.joins(:category).where(categories: { name: params[:category] })
     end
 

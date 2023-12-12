@@ -1,10 +1,25 @@
-
 <form class="d-flex w-100 pb-3" role="search" method="get" action="<%= root_path %>">
   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
   <input class="form-control me-2" type="number" placeholder="Min Price" aria-label="Min Price" name="min_price">
   <input class="form-control me-2" type="number" placeholder="Max Price" aria-label="Max Price" name="max_price">
-  <input class="form-control me-2" type="date" placeholder="Start Date" aria-label="Start Date" name="start_date">
-  <input class="form-control me-2" type="date" placeholder="End Date" aria-label="End Date" name="end_date">
+  <div class="form-check me-2">
+    <input class="form-check-input" type="checkbox" value="1" id="on_sale" name="on_sale">
+    <label class="form-check-label" for="on_sale">
+      On Sale
+    </label>
+  </div>
+  <div class="form-check me-2">
+    <input class="form-check-input" type="checkbox" value="1" id="recently_modified" name="recently_modified">
+    <label class="form-check-label" for="recently_modified">
+      Recently Modified
+    </label>
+  </div>
+  <div class="form-check me-2">
+    <input class="form-check-input" type="checkbox" value="1" id="recently_created" name="recently_created">
+    <label class="form-check-label" for="recently_created">
+      Created At
+    </label>
+  </div>
   <%= select_tag 'category', options_for_select(@categories.unshift('Select a category'), params[:category]), class: 'form-control me-2' %>
   <button class="btn btn-outline-success" type="submit">Search</button>
 </form>

@@ -22,6 +22,7 @@ electronics = [
     stock_quantity: Faker::Number.between(from: 1, to: 100),
     brand: Faker::Company.name,
     category_id: Faker::Number.between(from: 1, to: 5)
+    on_sale: Faker::Boolean.boolean
   )
 
   downloaded_image = URI.open("https://source.unsplash.com/random/?#{product_name}-product")
