@@ -1,3 +1,5 @@
+<%= debug session[:cart] %>
+
 <form class="d-flex w-100 pb-3" role="search" method="get" action="<%= root_path %>">
   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
   <input class="form-control me-2" type="number" placeholder="Min Price" aria-label="Min Price" name="min_price">
@@ -39,8 +41,8 @@
             <div class="row pb-2">
               <div class="col-8 d-flex justify-content-between align-items-center">
                 <span><%= product.name %> - $<%= product.price %></span>
-                <span>Quantity: <%= session[:cart].count(product.id) %></span>
                 <%= form_with(url: adjust_quantity_path(product.id), method: :post, local: true, class: 'd-flex align-items-center gap-3')  do |form| %>
+                  <span>Quantity: <%= session[:cart].count(product.id) %></span>
                   <%= form.number_field :quantity, value: session[:cart].count(product.id), min: 0, class: 'form-control' %>
                   <%= form.submit 'Update Quantity', class: 'btn btn-info' %>
                 <% end %>
@@ -51,7 +53,9 @@
             </div>
           <% end %>
         <% end %>
-        <%= button_to 'buy now', checkout_create_path, method: :post, class: 'btn btn-success' %>
+        <%# <%= button_to 'Checkout', checkout_create_path, method: :post, params: {cart: @cart}, class: 'btn btn-success' %>
+        <button id="checkoutButton">Checkout</button>
+
       </div>
     </div>
   </div>
