@@ -51,7 +51,7 @@
             </div>
           <% end %>
         <% end %>
-        <button id="checkoutButton", class='btn btn-success'>Checkout</button>
+        <%= button_to "Checkout", checkout_create_path, class: 'btn btn-success', id: 'checkoutButton' %>
       </div>
     </div>
   </div>
