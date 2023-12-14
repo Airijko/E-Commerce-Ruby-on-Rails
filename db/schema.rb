@@ -100,10 +100,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_11_235702) do
     t.decimal "price"
     t.integer "stock_quantity"
     t.string "brand"
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
-    t.integer "category_id"
     t.boolean "on_sale"
     t.index ["category_id"], name: "index_products_on_category_id"
   end

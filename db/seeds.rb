@@ -21,7 +21,7 @@ electronics = [
     price: Faker::Commerce.price(range: 0..500.00, as_string: true),
     stock_quantity: Faker::Number.between(from: 1, to: 100),
     brand: Faker::Company.name,
-    category_id: Faker::Number.between(from: 1, to: 5)
+    category_id: Faker::Number.between(from: 1, to: 5),
     on_sale: Faker::Boolean.boolean
   )
 
