@@ -1,4 +1,7 @@
-# Product.delete_all
+Category.destroy_all
+Product.destroy_all
+AdminUser.destroy_all
+
 
 categories = [
   'Smartphones & Accessories',

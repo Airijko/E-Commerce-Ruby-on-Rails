@@ -12,6 +12,6 @@ RUN bundle install
 
 COPY . .
 
-RUN rails db:create db:migrate db:seed
+# RUN rails db:create db:migrate db:seed
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
