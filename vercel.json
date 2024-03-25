@@ -1,17 +1,16 @@
 {
+  "version": 2,
+  "name": "e-commerce-ruby-on-rails",
   "builds": [
     {
-      "src": "api/",
-      "use": "@vercel/ruby",
-      "config": {
-        "command": "rails api:build"
-      }
+      "src": "Dockerfile",
+      "use": "@vercel/docker"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "api/public/$1"
+      "dest": "/"
     }
   ]
 }
