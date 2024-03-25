@@ -1,0 +1,17 @@
+{
+  "builds": [
+    {
+      "src": "api/",
+      "use": "@vercel/ruby",
+      "config": {
+        "command": "rails api:build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "api/public/$1"
+    }
+  ]
+}
