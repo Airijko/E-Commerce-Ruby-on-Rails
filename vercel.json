@@ -1,10 +1,10 @@
 {
   "builds": [
     {
-      "src": "api/",
+      "src": "**/*.rb",
       "use": "@vercel/ruby",
       "config": {
-        "command": "rails api:build"
+        "command": "rails server -p $PORT"
       }
     }
   ],
